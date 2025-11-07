@@ -2,8 +2,11 @@ from flask import Flask
 from config.database import engine, Base
 from routes.web import web
 import models.menu_model  # register model
+from flask_cors import CORS  # added for CORS
 
 app = Flask(__name__)
+
+CORS(app)  # enable CORS for the app
 
 # Buat tabel otomatis (kalau belum ada di DB)
 Base.metadata.create_all(bind=engine)
